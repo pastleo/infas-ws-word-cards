@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @word.title %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @word.answer %>
+</p>
+
+<p>
+  <strong>Visited:</strong>
+  <%= @word.visited %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @word.group %>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_word_path(@word) %> |
+  <%= link_to 'Memorizing', start_path(group: @word.group) %> |
+  <%= link_to 'Back', words_path %>
+</p>
