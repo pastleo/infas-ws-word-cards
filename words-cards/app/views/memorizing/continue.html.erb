@@ -1,0 +1,6 @@
+<h1><%= @word.title %></h1>
+<p>
+  <%= link_to 'exit', words_path %> |
+  <%= link_to 'next', continue_path(group: @group) %> |
+  <%= link_to 'answer', answer_path(word_id: @word.id) %>
+</p>
