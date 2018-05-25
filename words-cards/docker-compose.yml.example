@@ -1,0 +1,14 @@
+version: '3.1'
+volumes:
+  bundle:
+    driver: local
+services:
+  words_server:
+    build:
+      context: .
+    volumes:
+    - bundle:/usr/local/bundle
+    - /workspace/db
+    - ./log:/workspace/log
+    working_dir: /workspace
+    restart: always
