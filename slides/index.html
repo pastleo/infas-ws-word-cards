@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Infas workshop - 單字卡系統 by Ruby on Rails</title>
+    <title>Infas workshop - 用 Ruby on Rails 做一個單字卡系統</title>
 
     <link rel="stylesheet" href="deps/reveal.css">
     <link rel="stylesheet" href="deps/black.css">
@@ -47,6 +47,7 @@
 
     <script src="deps/head.min.js"></script>
     <script src="deps/reveal.js"></script>
+    <script src="lib/params.js"></script>
     <script src="lib/spotlight.js"></script>
     <script src="lib/timeline.js"></script>
 
@@ -64,6 +65,20 @@
           { src: 'deps/notes.js', async: true },
           { src: 'deps/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
         ]
+      });
+      Reveal.addEventListener('ready', () => {
+        ['indexh', 'indexv'].forEach(key => {
+          if(window.params[key] !== undefined) {
+            Reveal.setState({[key]: window.params[key]});
+          }
+        });
+      });
+      Reveal.addEventListener('slidechanged', (event) => {
+        ['indexh', 'indexv'].map(key => {
+          if(event[key] !== undefined) {
+            window.params = {[key]: event[key]};
+          }
+        });
       });
     </script>
   </body>

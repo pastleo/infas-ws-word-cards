@@ -1,0 +1,23 @@
+version: '3.1'
+volumes:
+  bundle:
+    driver: local
+  workspace:
+    driver: local
+services:
+  words_server:
+    image: chgu82837/infas-word-cards
+    build:
+      context: ../../words-cards
+    volumes:
+    - bundle:/usr/local/bundle
+    - workspace:/workspace
+    ports:
+      - '<%= 3000 + id %>:3000'
+  kodexplorer:
+    image: yangxuan8282/kodexplorer
+    volumes:
+    - workspace:/var/www/html/workspace
+    ports:
+      - '<%= 4000 + id %>:80'
+    restart: always
